@@ -5,7 +5,7 @@ import string
 import re
 import json
 
-stop_words = [
+STOP_WORDS = [
     'a', 'about', 'above', 'after', 'again', 'against', 'ain', 'all', 'am',
     'an', 'and', 'any', 'are', 'aren', "aren't", 'as', 'at', 'be', 'because',
     'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', 'can',
@@ -36,7 +36,7 @@ def preprocess_text(text):
     text = re.sub('[^a-zA-Z]', ' ', text)
     # Convert to lower case
     text = text.lower()
-    text = ' '.join(word for word in text.split() if word not in stop_words)
+    text = ' '.join(word for word in text.split() if word not in STOP_WORDS)
     return text
 
 def main():
