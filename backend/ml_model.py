@@ -58,7 +58,7 @@ def predict_emotion(prompt, model, token):
 def main():
     prompt = sys.argv[1]
     
-    model = load_model('my_emotion_model.keras')  
+    model = load_model('analysis_model.keras')  
     # model.summary()
 
     # Load the tokenizer JSON from file
