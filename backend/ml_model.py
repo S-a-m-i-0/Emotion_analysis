@@ -6,6 +6,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import string
 import re
+import sys
 
 MAX_LENGTH = 82
 EMOTION_CATEGORIES = {0: 'sadness', 1: 'joy', 2: 'love', 3: 'anger', 4: 'fear', 5: 'surprise'}
@@ -53,7 +54,7 @@ def predict_emotion(prompt, model, token):
         predicted_value = np.argmax(prediction, axis = -1)[0]
         predicted_emotion = EMOTION_CATEGORIES[predicted_value]
         
-        print(f"Predicted Emotion: {predicted_emotion}\n")
+        print(f"Predicted Emotion: {predicted_emotion}")
 
 def main():
     prompt = sys.argv[1]

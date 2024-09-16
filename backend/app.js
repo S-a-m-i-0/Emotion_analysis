@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 const bodyParser = require('body-parser');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { spawn } = require('child_process');
+
 const app = express();
 const PORT = 3000;
-const { spawn } = require('child_process');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -26,7 +27,13 @@ app.post('/initialize', (req, res) => {
 
 app.post('/run-model', async (req, res) => {
 
-    runTextAnalyzerModel(req.body.prompt)
+    if (req.body.prompt == null) {
+      prompt = "i am happy"
+    } else {
+      prompt = req.body.prompt;
+    }
+
+    runTextAnalyzerModel(prompt)
     .then(result => {
         console.log(`Python script output: ${result}`);
 
@@ -66,7 +73,7 @@ function runTokenInitializer() {
 function runTextAnalyzerModel(prompt) {
     return new Promise((resolve, reject) => {
         // Spawn the Python process
-        const mlProcess = spawn('python', ['ml_model.py', prompt]);
+        const mlProcess = spawn('python3', ['ml_model.py', prompt]);
         
         let result = '';
 
@@ -92,29 +99,24 @@ function runTextAnalyzerModel(prompt) {
     });
 }
 
-function runAIModel(prompt, emotion) {
-  return new Promise ((resolve, reject) => {
-    const aiProcess = spawn('python', ['ai_model.py', prompt, emotion]);
+async function runAIModel(prompt, emotion) {
 
-    let result = '';
+  // Make sure to include these imports:
+  const genAI = new GoogleGenerativeAI("AIzaSyB52FPCTfuMIAs62e8dRtKvNpDPHBpxQwo");
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    generationConfig: {
+      temperature: 1.0,
+    },
+  });
 
-    aiProcess.stdout.on('data', (data) => {
-      result += data.toString();
-    })
+  prompt = "Your name is Alex. You are a friend of users. When users feel sad, happy, anger, surprise, etc., you will react accordingly. You will receive two parameters: 1) The user will tell you a sentence, 2) I will tell you whether that text seemed happy or sad or etc. Then you will reply nicely and accordingly and in a friendly manner and be as cooperative as possible. Give big and cooperative responses. I will give you the prompt above everytime but the prompt below will be different as it will contain the user prompt. Here are the parameters: 1) " + prompt + " 2) " + emotion;
 
-    aiProcess.stderr.on('data', (data) => {
-      console.error(`Error: ${data}`);
-      reject(data.toString());
-    })
+  const result = await model.generateContent(prompt);
+  const res = await result.response.text();
 
-    aiProcess.on('close', (code) => {
-      if (code !== 0) {
-        reject(`Python script exited with code ${code}`);
-      } else {
-        resolve(result.trim());
-      }
-    })
-  })
+  console.log(res);
+  return res;
 }
 
 app.listen(PORT, () => {
