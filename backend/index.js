@@ -66,7 +66,7 @@ function runTokenInitializer() {
 function runTextAnalyzerModel(prompt) {
     return new Promise((resolve, reject) => {
         // Spawn the Python process
-        const mlProcess = spawn('python', ['hello.py', prompt]);
+        const mlProcess = spawn('python', ['ml_model.py', prompt]);
         
         let result = '';
 
