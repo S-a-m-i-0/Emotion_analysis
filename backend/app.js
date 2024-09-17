@@ -14,7 +14,6 @@ app.get('/', (req, res) => {
   runTokenInitializer()
   .then(() => {
     console.log('Token initialization successful')
-    runAIModel("Hi Alex", "joy", false)
   })
   .catch(error => {
     console.error(`Error initializing Tokenizer: ${error}`);
@@ -27,7 +26,7 @@ app.post('/run-model', async (req, res) => {
     .then(result => {
         console.log(`Python script output: ${result}`);
 
-        runAIModel(req.body.prompt, result, true)
+        runAIModel(req.body.prompt, result)
         .then(result => {
             console.log(`Python script output: ${result}`);
             res.json({ message: result });
@@ -89,8 +88,7 @@ function runTextAnalyzerModel(prompt) {
     });
 }
 
-async function runAIModel(prompt, emotion, isInitialized) {
-
+async function runAIModel(user_input, emotion) {
   // Make sure to include these imports:
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
   const model = genAI.getGenerativeModel({
@@ -100,15 +98,10 @@ async function runAIModel(prompt, emotion, isInitialized) {
     },
   });
 
-  if (isInitialized) {
-    prompt = prompt + ". The detected emotion for this sentence is: " + emotion
-  } else {
-    prompt = "Your name is Alex. You are a friend of users. When users feel sad, happy, anger, surprise, etc., you will react accordingly. You will receive two parameters: 1) The user will tell you a sentence, 2) I will tell you the detected emotion for that sentence, e.g. happy or sad or etc. Then you will reply nicely and accordingly and in a friendly manner and be as cooperative as possible.";
-  }
+  prompt = "User Input: " + user_input + ".\n Emotion detected in sentence: " + emotion + ".\n Write a short story, poem, or song lyrics based on the emotion detected in the user's input sentence."
 
   const result = await model.generateContent(prompt);
   const res = await result.response.text();
-
   return res;
 }
 
