@@ -10,7 +10,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/run-tokenizer', (req, res) => {
   runTokenInitializer()
   .then(() => {
     console.log('Token initialization successful')
@@ -21,14 +21,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/run-model', async (req, res) => {
-
     runTextAnalyzerModel(req.body.prompt)
     .then(result => {
         console.log(`Python script output: ${result}`);
 
         runAIModel(req.body.prompt, result)
         .then(result => {
-            console.log(`Python script output: ${result}`);
+            console.log(`Python script output:\n ${result}`);
             res.json({ message: result });
           })
         .catch(error => {
@@ -90,7 +89,7 @@ function runTextAnalyzerModel(prompt) {
 
 async function runAIModel(user_input, emotion) {
   // Make sure to include these imports:
-  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+  const genAI = new GoogleGenerativeAI("AIzaSyB52FPCTfuMIAs62e8dRtKvNpDPHBpxQwo");
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
     generationConfig: {
@@ -98,7 +97,7 @@ async function runAIModel(user_input, emotion) {
     },
   });
 
-  prompt = "User Input: " + user_input + ".\n Emotion detected in sentence: " + emotion + ".\n Write a short story, poem, or song lyrics based on the emotion detected in the user's input sentence."
+  prompt = "User Input: " + user_input + ".\n Emotion detected in sentence: " + emotion + ".\n Write a short story, poem, or song lyrics based on the emotion detected in the user's input sentence. Do not write anything else, just give me the short story, poem, or song."
 
   const result = await model.generateContent(prompt);
   const res = await result.response.text();

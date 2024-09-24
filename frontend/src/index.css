@@ -1,68 +1,168 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+
+
+
+
+
+
+.gradient-background {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: left;
+  background: linear-gradient(to bottom, #040104, #111A43);
+  position: relative;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.emojis-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/emojis.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  z-index: 1;
+  opacity: 0.4;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.components-container {
+  margin: 150px 100px auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Container to center the chat box */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.chat-box-wrapper {
+  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 0));
+  border-radius: 30px;
+  transition: padding 0.3s ease; /* Smooth transition when padding changes on hover */
+  width: 75%;
+}
+
+.chat-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+}
+
+.chat-box:hover {
+  margin-top: 4px;
+  margin-bottom: 6px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.chat-input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 25px;
+  background-color: transparent;
+  color: black;
+  cursor: text;
+}
+
+/* Send button styling */
+.send-button {
+  background-color: #3423A6; /* Zaffre color */
+  padding: 11px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.3s ease;
+  width: 50px;
+  height: 50px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.send-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.send-button:hover {
+  background-color: #2E1760; /* Federal blue on hover */
+}
+
+.loading-message {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* For AIResults component */
+
+.ai-results {
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+  background-color: #0E122C;
+  color: #f8fafc;
+  width: 80%;
+  text-align: center; /* Center the text */
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+.results-text {
+  display: inline-block;
+  text-align: center; /* Ensures text within each <p> is centered */
+  width: 100%;
+}
+
+.ai-results h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #d1d5db;
+}
+
+.ai-results p {
+  font-size: 1.3rem;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+}
+
+.footer {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  margin-top: 50px;
+  background-color: #0C1029;
+  z-index: 1;
+  opacity: 0.8;
 }
