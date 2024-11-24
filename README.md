@@ -1,5 +1,3 @@
-Emotion Analysis Model Documentation
-
 <h1>1. Overview</h1>
 
 The Emotion Analysis Model is a machine learning-based application designed to classify emotions in textual data. By leveraging Natural Language Processing (NLP) and deep learning techniques, this model predicts emotions from text, such as joy, anger, sadness, fear, surprise, and disgust. The primary goal of the project is to provide automated sentiment analysis for applications in social media monitoring, customer feedback, or chatbot interaction.
