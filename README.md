@@ -1,56 +1,63 @@
-<h1>1. Overview</h1>
+# Emotion Analysis Model
 
-The Emotion Analysis Model is a machine learning-based application designed to classify emotions in textual data. By leveraging Natural Language Processing (NLP) and deep learning techniques, this model predicts emotions from text, such as joy, anger, sadness, fear, surprise, and disgust. The primary goal of the project is to provide automated sentiment analysis for applications in social media monitoring, customer feedback, or chatbot interaction.
+This project is a machine learning-based Emotion Analysis Model designed to classify text into six predefined emotions: **sadness**, **joy**, **love**, **anger**, **fear**, and **surprise**. It uses a deep learning model built with TensorFlow and Keras, leveraging an LSTM-based architecture to capture sequential patterns in text.
+
+## Features
+- Classifies text into six emotion categories.
+- Handles imbalanced datasets using class weighting.
+- Provides a user-friendly interactive prediction interface.
+- Achieves high accuracy and robust performance on a real-world dataset.
+
+## Table of Contents
+- [Model Architecture](#model-architecture)
+- [Dataset](#dataset)
+- [Results](#results)
+- [Setup and Usage](#setup-and-usage)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Training the Model](#training-the-model)
+  - [Using the Pretrained Model](#using-the-pretrained-model)
+  - [Interactive Prediction](#interactive-prediction)
+- [Contribution](#contribution)
+- [Acknowledgments](#acknowledgments)
+
+## Model Architecture
+The model uses a sequential architecture:
+1. **Embedding Layer**: Converts words into dense vector representations.
+2. **LSTM Layers**: Two stacked LSTM layers to capture temporal dependencies.
+3. **Dropout Layers**: Prevents overfitting.
+4. **Dense Layer**: Outputs probability distribution across the emotion classes.
+
+### Key Model Details:
+- Framework: TensorFlow/Keras
+- Loss Function: Categorical Cross-Entropy
+- Optimizer: Adam
+- Metrics: Accuracy
+- Maximum Sequence Length: 82
+- Training Epochs: 3
+
+## Dataset
+- Preprocessed to remove noise, punctuation, and stopwords.
+- Tokenized and padded sequences for uniformity.
+- Labels are one-hot encoded for six emotion categories.
+
+## Results
+- Training Accuracy: **94.11%**
+- Validation Accuracy: **93.77%**
+- Test Accuracy: **93.92%**
+
+## Setup and Usage
+
+### Prerequisites
+- Python 3.7 or higher
+- TensorFlow 2.x
+- Required libraries: `numpy`, `pandas`, `sklearn`
+
+### Installation
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/emotion-analysis-model.git
+
+
 
 Video Demo: https://drive.google.com/file/d/1wYE-fptvtKGxKqfQyUf8a8tKMBp7OoDL/view?usp=sharing
-
-<h1>2. Features</h1>
-
-Multiclass Emotion Classification: Predicts emotions from six categories (joy, anger, sadness, fear, surprise, disgust).
-Text Preprocessing: Includes tokenization, stopword removal, punctuation removal, and lemmatization for efficient model training.
-Deep Learning Integration: Uses a neural network architecture (e.g., LSTM, BERT) to improve prediction accuracy.
-Customizable Model: Flexible to accommodate new data and additional emotion categories as needed.
-
-<h1>Data Preprocessing</h1>
-
-The text data undergoes several preprocessing steps:
-
-Text Cleaning: Remove punctuation, special characters, and non-alphabetic tokens.
-Tokenization: Split text into individual tokens (words or sub-words).
-Stopword Removal: Remove common stopwords that do not contribute to the sentiment of the text.
-Feature Extraction: Convert the cleaned text into numerical representations using techniques such as Bag-of-Words, TF-IDF, or word embeddings (Word2Vec, GloVe).
-
-<h1>4. Model Architecture</h1>
-
-The model employs a deep learning approach, such as:
-
-LSTM (Long Short-Term Memory): Utilized for its ability to learn and remember long-term dependencies in text sequences.
-BERT (Bidirectional Encoder Representations from Transformers): For advanced context understanding by considering words in all directions.
-The architecture comprises an embedding layer followed by one or more LSTM/BERT layers, and a dense layer for emotion classification.
-
-<h1>5. Model Training</h1>
-
-The model is trained on a labeled dataset of text samples annotated with emotions. Key details:
-
-Dataset: Contains 5,000+ labeled text samples from diverse sources such as social media, news, and blogs.
-Loss Function: Categorical Crossentropy for multiclass classification.
-Optimizer: Adam optimizer with a learning rate of 0.001.
-Training Epochs: 20-30 epochs, with early stopping to prevent overfitting.
-
-<h1>6. Evaluation</h1>
-
-The model’s performance is evaluated using standard metrics:
-
-Accuracy: The model achieved 94% accuracy on the test set.
-Confusion Matrix: Used to visualize the distribution of predicted vs. actual emotions.
-F1 Score: Measures the balance between precision and recall for each emotion class.
-
-
-<h1>7. Customization</h1>
-
-Add More Emotions: The model can be retrained with additional emotions by adding new labels to the dataset.
-Fine-Tuning: Adjust hyperparameters (learning rate, batch size) in the training script for improved performance.
-
-<h1>9. Conclusion</h1>
-
-The Emotion Analysis Model is a versatile and customizable tool for predicting emotions from text. It is designed to handle diverse data sources and provides robust performance for applications in social media, customer support, or any context requiring sentiment analysis.
