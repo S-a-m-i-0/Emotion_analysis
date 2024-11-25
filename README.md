@@ -1,5 +1,5 @@
 
-![Demo of Emotion Analysis](https://github.com/S-a-m-i-0/Emotion_analysis/blob/main/templates/LeoAIDemo.gif)
+![Demo of Emotion Analysis](https://github.com/S-a-m-i-0/Emotion_analysis/blob/main/templates/Leo_AI.gif)
 # Emotion Analysis Model
 
 This project is a machine learning-based Emotion Analysis Model designed to classify text into six predefined emotions: **sadness**, **joy**, **love**, **anger**, **fear**, and **surprise**. It uses a deep learning model built with TensorFlow and Keras, leveraging an LSTM-based architecture to capture sequential patterns in text.
