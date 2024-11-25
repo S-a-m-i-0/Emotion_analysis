@@ -19,10 +19,9 @@ This project is a machine learning-based Emotion Analysis Model designed to clas
 - [Setup and Usage](#setup-and-usage)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Training the Model](#training-the-model)
-  - [Using the Pretrained Model](#using-the-pretrained-model)
-  - [Interactive Prediction](#interactive-prediction)
+  - [Training the Model](#Training-the-model)
 - [Contribution](#contribution)
+- [Technologies](#Technologies)
 - [Acknowledgments](#acknowledgments)
 
 ## Model Architecture
@@ -77,6 +76,24 @@ The model uses a sequential architecture:
 4. Open the browser and navigate to the provided localhost URL http://localhost:3000
 5. Use the browser interface to interact with the Emotion Analysis Model.
 
-### training-the-model
-If you want to train the model with your own dataset then open the notebook using jupyter notebook and adjust the model parameters according to your preference and train the model
+### Training-the-model
+If you want to train the model with your own dataset then open the notebook using jupyter notebook and adjust the model parameters according to your preference and train the model# Emotion Analysis Model
+
+This project is a full-stack Emotion Analysis Model that leverages modern web technologies and machine learning to classify text into six emotion categories.
+
+## Technologies
+
+### Frontend
+- **React.js**: Used to build an interactive and user-friendly interface for entering text and displaying predictions.
+
+### Backend
+- **Node.js**: Provides a robust backend server to handle API requests and connect the frontend with the Python-based logic.
+
+### Machine Learning Logic
+- **Python**: Implements the core logic for emotion classification using a deep learning model built with TensorFlow.
+
+---
+
+This combination of technologies ensures a seamless integration of machine learning models into a web-based application, providing a highly efficient and scalable solution for emotion analysis.
+
 
