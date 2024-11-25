@@ -1,6 +1,8 @@
-
-![Demo of Emotion Analysis](https://github.com/S-a-m-i-0/Emotion_analysis/blob/main/templates/Leo_AI.gif)
 # Emotion Analysis Model
+![Demo of Emotion Analysis](https://github.com/S-a-m-i-0/Emotion_analysis/blob/main/templates/Leo_AI.gif)
+
+Video Demo: https://drive.google.com/file/d/1wYE-fptvtKGxKqfQyUf8a8tKMBp7OoDL/view?usp=sharing
+
 
 This project is a machine learning-based Emotion Analysis Model designed to classify text into six predefined emotions: **sadness**, **joy**, **love**, **anger**, **fear**, and **surprise**. It uses a deep learning model built with TensorFlow and Keras, leveraging an LSTM-based architecture to capture sequential patterns in text.
 
@@ -58,9 +60,23 @@ The model uses a sequential architecture:
 
 ### Installation
 1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/emotion-analysis-model.git
+```bash
+  git clone https://github.com/your-username/emotion-analysis-model.git
+```
 
+2. Instatting the frontend requirments:
+```bash
+  cd frontend
+  npm install
+```
+3. Running the application:
+```bash
+  python app.py
+  npm run dev
+```
+4. Open the browser and navigate to the provided localhost URL http://localhost:3000
+5. Use the browser interface to interact with the Emotion Analysis Model.
 
+### training-the-model
+If you want to train the model with your own dataset then open the notebook using jupyter notebook and adjust the model parameters according to your preference and train the model
 
-Video Demo: https://drive.google.com/file/d/1wYE-fptvtKGxKqfQyUf8a8tKMBp7OoDL/view?usp=sharing
