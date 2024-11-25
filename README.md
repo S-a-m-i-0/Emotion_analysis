@@ -39,6 +39,7 @@ The model uses a sequential architecture:
 - Training Epochs: 3
 
 ## Dataset
+- used dataset from Kaggle containing 500,000 plus value-labled pair to train the model
 - Preprocessed to remove noise, punctuation, and stopwords.
 - Tokenized and padded sequences for uniformity.
 - Labels are one-hot encoded for six emotion categories.
