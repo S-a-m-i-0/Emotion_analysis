@@ -54,7 +54,7 @@ The model uses a sequential architecture:
 ### Prerequisites
 - Python 3.7 or higher
 - TensorFlow 2.x
-- Required libraries: `numpy`, `pandas`, `sklearn`
+- Required libraries: `numpy`, `pandas`, `sklearn`, `tensorflow`, `matplotlib`
 
 ### Installation
 1. Clone this repository:
