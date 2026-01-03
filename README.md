@@ -95,20 +95,6 @@ This project is a full-stack Emotion Analysis Model that leverages modern web te
 
 This combination of technologies ensures a seamless integration of machine learning models into a web-based application, providing a highly efficient and scalable solution for emotion analysis.
 
-## Contributors
-
-•⁠  ⁠**Sadman Sami**<br/>
-&emsp;•⁠  Implemented the deep Learning model using the preprocessed data.<br/>
-&emsp;•⁠  Preprocess and cleaned the dataset for accurate prediction<br/>
-&emsp;•⁠  Tested the trained model using the ,evaluating accuracy, precision and recall.<br/>
-&emsp;•⁠  Integrated the backend and frontend code, used child process to run the python logic in node.js backend and handled all requests<br/>
-
-•⁠  ⁠**Maher Nurul Huda**<br/>
-&emsp;•⁠  Developed the React website that showcases our project.<br/>
-&emsp;•⁠  Integrated the app with NLP model to generate stories according to sentiment<br/>
-&emsp;•⁠  Created python file to use pretrained model for the app<br/>
-&emsp;•⁠  Integrated the backend and frontend code, handling all GET and POST requests for smooth data flow between the model and the user interface.
-
 
 
 
